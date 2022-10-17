@@ -4,8 +4,7 @@ import com.example.kachat.sample.model.message.FileContainer;
 import com.example.kachat.sample.model.response.ResponseDetails;
 import com.example.kachat.sample.model.response.ResponseEntityBody;
 import com.example.kachat.sample.service.FileService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,10 +15,9 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "kachat/file")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class FileController {
 
-    @Autowired
     private final FileService fileService;
 
     @GetMapping(value = "download/{file_id}")

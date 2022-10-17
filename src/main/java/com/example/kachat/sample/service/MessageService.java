@@ -3,10 +3,9 @@ package com.example.kachat.sample.service;
 import com.example.kachat.sample.model.message.Message;
 import com.example.kachat.sample.repository.message.MessageRepository;
 import com.mongodb.MongoException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,10 +16,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MessageService {
 
-    @Autowired
     private final MessageRepository messageRepository;
     private final FileService fileService;
     private final UserService userService;

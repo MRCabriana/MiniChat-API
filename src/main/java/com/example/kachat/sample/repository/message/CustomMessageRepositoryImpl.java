@@ -1,9 +1,8 @@
 package com.example.kachat.sample.repository.message;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -12,10 +11,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import java.util.Arrays;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomMessageRepositoryImpl implements CustomMessageRepository {
 
-    @Autowired
     private final MongoTemplate mongoTemplate;
 
     @Override

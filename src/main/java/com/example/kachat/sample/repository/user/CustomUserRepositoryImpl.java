@@ -1,18 +1,16 @@
 package com.example.kachat.sample.repository.user;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomUserRepositoryImpl implements CustomUserRepository {
 
-    @Autowired
     private final MongoTemplate mongoTemplate;
 
     @Override

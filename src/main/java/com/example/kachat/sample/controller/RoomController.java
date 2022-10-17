@@ -6,9 +6,8 @@ import com.example.kachat.sample.model.Room;
 import com.example.kachat.sample.service.RoomService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mongodb.MongoException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +17,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "kachat/rooms")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RoomController {
 
-    @Autowired
     private final RoomService roomService;
 
     @GetMapping(value = "{user_id}")

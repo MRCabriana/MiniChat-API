@@ -1,10 +1,9 @@
 package com.example.kachat.sample.repository.room;
 
 import com.example.kachat.sample.model.Room;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
@@ -16,10 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomRoomRepositoryImpl implements CustomRoomRepository {
 
-    @Autowired
     private final MongoTemplate mongoTemplate;
 
     @Override

@@ -5,11 +5,14 @@ import com.example.kachat.sample.model.response.ResponseDetails;
 import com.example.kachat.sample.model.response.ResponseEntityBody;
 import com.example.kachat.sample.service.MessageService;
 import com.mongodb.MongoException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,14 +20,16 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "kachat/messages")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MessageController {
 
-    @Autowired
+    private final SimpMessagingTemplate simpMessagingTemplate;
     private final MessageService messageService;
 
-    @PostMapping
-    public ResponseEntity<ResponseEntityBody> sendMessage(@RequestPart(value = "message") Message message,
+    @MessageMapping(value = "{roomName}")
+    @SendTo(value = "{roomName}")
+    public ResponseEntity<ResponseEntityBody> sendMessage(@DestinationVariable String roomName,
+                                                          @RequestPart(value = "message") Message message,
                                                           @RequestParam(value = "files", required = false) MultipartFile... files) {
         HttpStatus status;
 

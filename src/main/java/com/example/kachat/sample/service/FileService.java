@@ -4,9 +4,8 @@ import com.example.kachat.sample.model.message.FileContainer;
 import com.example.kachat.sample.repository.message.file.FileRepository;
 import com.mongodb.MongoException;
 import com.mongodb.client.gridfs.model.GridFSFile;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
@@ -19,10 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class FileService {
 
-    @Autowired
     private final GridFsTemplate gridFsTemplate;
     private final GridFsOperations gridFsOperations;
     private final FileRepository fileRepository;
